@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pravaha-setu"
+version = "0.0.1"
+description = "Advisory-only coordinated flood-release system for Koyna, Warna, and Radhanagari reservoirs (Kolhapur, Upper Krishna Basin, Maharashtra)."
+requires-python = ">=3.11"
+readme = "README.md"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra --cov=src/pravaha_setu --cov-report=term-missing"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["src/pravaha_setu"]

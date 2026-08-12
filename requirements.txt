@@ -1,0 +1,27 @@
+# Core runtime dependencies. See CLAUDE.md > Tech stack for rationale.
+
+# Data handling
+pandas
+numpy
+
+# Forecasting
+scikit-learn
+torch
+optuna
+
+# Routing / calibration
+scipy
+
+# Data validation (optional, per CLAUDE.md)
+pandera
+
+# Backend (Module 6)
+fastapi
+uvicorn[standard]
+pydantic
+sqlalchemy
+alembic
+psycopg2-binary
+
+# Config
+python-dotenv

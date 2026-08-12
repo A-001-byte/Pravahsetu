@@ -1,0 +1,52 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+htmlcov/
+.coverage
+.coverage.*
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- Node / frontend ---
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# --- Environment ---
+.env
+.env.local
+.env.*.local
+
+# --- Data (raw/processed data is not committed; folder layout is kept via .gitkeep) ---
+data/raw/**
+data/processed/**
+data/events/**
+!data/raw/**/
+!data/processed/**/
+!data/events/**/
+!data/**/.gitkeep
+
+# --- Trained models / large artifacts ---
+*.pt
+*.pth
+*.pkl
+*.h5
+
+# --- Docker ---
+docker-compose.override.yml
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- IDE ---
+.vscode/
+.idea/
