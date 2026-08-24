@@ -27,6 +27,10 @@ select = ["E", "F", "I", "UP"]
 minversion = "7.0"
 addopts = "-ra --cov=src/pravaha_setu --cov-report=term-missing"
 testpaths = ["tests"]
+# backend/ is a separate top-level package (app.*), not installed via
+# src/ packaging -- add it to sys.path so `from app.main import app` etc.
+# resolve when pytest is run from the repo root.
+pythonpath = ["backend", "src"]
 
 [tool.coverage.run]
 source = ["src/pravaha_setu"]
