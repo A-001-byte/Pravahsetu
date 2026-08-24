@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import datetime as dt
 
-from sqlalchemy import Date, DateTime, Float, ForeignKey, Integer, String, Time
+from sqlalchemy import Date, DateTime, Float, ForeignKey, Integer, String, Time, UniqueConstraint
 from sqlalchemy.dialects.postgresql import ARRAY, JSONB
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
@@ -44,7 +44,14 @@ class ReservoirObservation(Base):
     """Daily inflow/outflow/storage record for one reservoir (Module 1)."""
 
     __tablename__ = "reservoir_observations"
-
+    __table_args__ = (
+        UniqueConstraint(
+            "reservoir_id",
+            "obs_date",
+            "source",
+            name="uq_reservoir_observations_reservoir_date_source",
+        ),
+    )
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     reservoir_id: Mapped[int] = mapped_column(ForeignKey("reservoirs.id"), nullable=False)
     obs_date: Mapped[dt.date] = mapped_column(Date, nullable=False)
@@ -64,6 +71,11 @@ class RainfallGrid(Base):
     """
 
     __tablename__ = "rainfall_grid"
+    __table_args__ = (
+        UniqueConstraint(
+            "reservoir_id", "obs_date", "source", name="uq_rainfall_grid_reservoir_date_source"
+        ),
+    )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     reservoir_id: Mapped[int] = mapped_column(ForeignKey("reservoirs.id"), nullable=False)
