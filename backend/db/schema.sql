@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS reservoir_observations (
     storage_mcm FLOAT,
     inflow_cumecs FLOAT,
     outflow_cumecs FLOAT,
-    source TEXT,
+    source TEXT NOT NULL,
     UNIQUE (reservoir_id, obs_date, source)
 );
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS rainfall_grid (
     reservoir_id INT NOT NULL REFERENCES reservoirs(id),
     obs_date DATE NOT NULL,
     rainfall_mm FLOAT,
-    source TEXT,
+    source TEXT NOT NULL,
     UNIQUE (reservoir_id, obs_date, source)
 );
 

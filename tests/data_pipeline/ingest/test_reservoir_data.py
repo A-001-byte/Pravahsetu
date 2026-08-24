@@ -2,7 +2,6 @@
 public-bulletin format (not a copy of any actual downloaded PDF).
 """
 
-import re
 
 from pravaha_setu.data_pipeline.ingest.reservoir_data import _ROW_PATTERN, _parse_bulletin_date
 

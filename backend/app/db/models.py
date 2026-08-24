@@ -51,7 +51,7 @@ class ReservoirObservation(Base):
     storage_mcm: Mapped[float | None] = mapped_column(Float)
     inflow_cumecs: Mapped[float | None] = mapped_column(Float)
     outflow_cumecs: Mapped[float | None] = mapped_column(Float)
-    source: Mapped[str | None] = mapped_column(String)
+    source: Mapped[str] = mapped_column(String, nullable=False)
 
     reservoir: Mapped[Reservoir] = relationship(back_populates="observations")
 
@@ -69,7 +69,7 @@ class RainfallGrid(Base):
     reservoir_id: Mapped[int] = mapped_column(ForeignKey("reservoirs.id"), nullable=False)
     obs_date: Mapped[dt.date] = mapped_column(Date, nullable=False)
     rainfall_mm: Mapped[float | None] = mapped_column(Float)
-    source: Mapped[str | None] = mapped_column(String)
+    source: Mapped[str] = mapped_column(String, nullable=False)
 
 
 class GaugeObservation(Base):
